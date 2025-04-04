@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
@@ -6,7 +5,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Book, Users, PlayCircle, FileText, Star, Clock, Calendar, Certificate } from 'lucide-react';
+import { Book, Users, PlayCircle, FileText, Star, Clock, Calendar, Award } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 
@@ -14,7 +13,6 @@ const CourseDetail = () => {
   const { courseId } = useParams<{ courseId: string }>();
   const [activeModule, setActiveModule] = useState("module1");
   
-  // Mock course data - in a real app, fetch this based on courseId
   const course = {
     id: 1,
     title: 'Introduction to Computer Science',
@@ -68,7 +66,6 @@ const CourseDetail = () => {
     return <div>Loading...</div>;
   }
 
-  // Calculate total completed lectures
   const totalLectures = course.modules.reduce((acc, module) => acc + module.lectures.length, 0);
   const completedLectures = course.modules.reduce(
     (acc, module) => acc + module.lectures.filter(l => l.completed).length, 
@@ -79,7 +76,6 @@ const CourseDetail = () => {
     <div className="min-h-screen bg-gray-50">
       <Navbar />
       
-      {/* Course Header */}
       <div className={`bg-gradient-to-r from-${course.color}-600 to-${course.color}-700 text-white py-12`}>
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
@@ -130,7 +126,6 @@ const CourseDetail = () => {
       
       <div className="container mx-auto px-4 py-8 max-w-7xl">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Main Content */}
           <div className="lg:col-span-2">
             <Tabs defaultValue="content" className="mb-8">
               <TabsList className="mb-6">
@@ -243,7 +238,6 @@ const CourseDetail = () => {
                     </div>
                     
                     <div className="space-y-6">
-                      {/* Sample reviews */}
                       <div className="border-b pb-6">
                         <div className="flex items-center mb-2">
                           <div className="w-10 h-10 rounded-full bg-purple-100 flex items-center justify-center text-purple-700 font-medium mr-3">JS</div>
@@ -290,7 +284,6 @@ const CourseDetail = () => {
                     <h2 className="text-xl font-medium mb-4">My Notes</h2>
                     <p className="text-gray-500 mb-6">Take notes while watching lectures to help with studying later.</p>
                     
-                    {/* Note-taking functionality would be added here */}
                     <div className="p-6 text-center border border-dashed rounded-md">
                       <FileText className="mx-auto h-8 w-8 text-gray-400 mb-2" />
                       <h3 className="text-lg font-medium">No notes yet</h3>
@@ -303,7 +296,6 @@ const CourseDetail = () => {
             </Tabs>
           </div>
           
-          {/* Sidebar */}
           <div>
             <Card className="sticky top-8">
               <CardContent className="pt-6 space-y-6">
@@ -340,7 +332,7 @@ const CourseDetail = () => {
                       <span>12 downloadable resources</span>
                     </div>
                     <div className="flex items-center">
-                      <Certificate className="h-4 w-4 text-gray-500 mr-2" />
+                      <Award className="h-4 w-4 text-gray-500 mr-2" />
                       <span>Certificate of completion</span>
                     </div>
                     <div className="flex items-center">
