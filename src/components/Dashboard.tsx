@@ -1,4 +1,6 @@
+
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Book, Award, CheckCircle, Clock } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import CourseCard from './CourseCard';
@@ -113,17 +115,18 @@ const Dashboard: React.FC = () => {
           <div className="mb-8">
             <div className="flex justify-between items-center mb-4">
               <h2 className="text-xl font-medium">My Courses</h2>
-              <a href="/courses" className="text-purple-600 text-sm hover:underline">View all courses</a>
+              <Link to="/courses" className="text-purple-600 text-sm hover:underline">View all courses</Link>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {courses.map(course => (
-                <CourseCard
-                  key={course.id}
-                  title={course.title}
-                  instructor={course.instructor}
-                  progress={course.progress}
-                  color={course.color}
-                />
+                <Link to={`/courses/${course.id}`} key={course.id} className="hover:no-underline">
+                  <CourseCard
+                    title={course.title}
+                    instructor={course.instructor}
+                    progress={course.progress}
+                    color={course.color}
+                  />
+                </Link>
               ))}
             </div>
           </div>
@@ -132,7 +135,7 @@ const Dashboard: React.FC = () => {
           <div>
             <div className="flex justify-between items-center mb-4">
               <h2 className="text-xl font-medium">Upcoming Assignments</h2>
-              <a href="/assignments" className="text-purple-600 text-sm hover:underline">View all assignments</a>
+              <Link to="/assignments" className="text-purple-600 text-sm hover:underline">View all assignments</Link>
             </div>
             <div className="space-y-4">
               {assignments.map((assignment, index) => (
@@ -168,28 +171,28 @@ const Dashboard: React.FC = () => {
               </h3>
               <ul className="space-y-3">
                 <li className="text-sm">
-                  <a href="#" className="text-gray-700 hover:text-purple-700 flex items-start">
+                  <Link to="/courses/2" className="text-gray-700 hover:text-purple-700 flex items-start">
                     <span className="bg-purple-100 p-1 rounded-full mr-2 flex-shrink-0 mt-0.5">
                       <Book className="h-3 w-3 text-purple-600" />
                     </span>
                     <span>Review Chapter 5 before your upcoming Data Structures quiz</span>
-                  </a>
+                  </Link>
                 </li>
                 <li className="text-sm">
-                  <a href="#" className="text-gray-700 hover:text-purple-700 flex items-start">
+                  <Link to="/assignments" className="text-gray-700 hover:text-purple-700 flex items-start">
                     <span className="bg-purple-100 p-1 rounded-full mr-2 flex-shrink-0 mt-0.5">
                       <Clock className="h-3 w-3 text-purple-600" />
                     </span>
                     <span>Your AI Weekly Quiz is due in 3 days</span>
-                  </a>
+                  </Link>
                 </li>
                 <li className="text-sm">
-                  <a href="#" className="text-gray-700 hover:text-purple-700 flex items-start">
+                  <Link to="/courses/3" className="text-gray-700 hover:text-purple-700 flex items-start">
                     <span className="bg-purple-100 p-1 rounded-full mr-2 flex-shrink-0 mt-0.5">
                       <CheckCircle className="h-3 w-3 text-purple-600" />
                     </span>
                     <span>Complete your Web Development project to maintain your perfect streak</span>
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </CardContent>

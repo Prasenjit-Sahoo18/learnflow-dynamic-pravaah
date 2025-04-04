@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Calendar, Clock } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -45,21 +46,33 @@ const UpcomingAssignment: React.FC<UpcomingAssignmentProps> = ({
       default: return 'bg-yellow-50 border-yellow-200 text-yellow-700';
     }
   };
+
+  // Calculate days remaining for pending assignments
+  const getDaysRemaining = () => {
+    const dueDateTime = new Date(dueDate).getTime();
+    const currentTime = new Date().getTime();
+    const differenceInTime = dueDateTime - currentTime;
+    const differenceInDays = Math.ceil(differenceInTime / (1000 * 3600 * 24));
+    
+    return differenceInDays > 0 ? `${differenceInDays} days` : 'Due today';
+  };
   
   return (
-    <Card className="hover:shadow-md transition-shadow duration-300">
+    <Card className="hover:shadow-md transition-shadow duration-300 group">
       <CardContent className="pt-6">
         <div className="flex items-start justify-between">
           <div>
             <div className="flex items-center space-x-2 mb-1">
-              <Badge variant="outline" className={getPriorityColor()}>
-                {priority.charAt(0).toUpperCase() + priority.slice(1)} Priority
-              </Badge>
+              {priority && (
+                <Badge variant="outline" className={getPriorityColor()}>
+                  {priority.charAt(0).toUpperCase() + priority.slice(1)} Priority
+                </Badge>
+              )}
               <Badge variant="secondary" className={getStatusColor()}>
                 {getStatusText()}
               </Badge>
             </div>
-            <h3 className="font-medium text-lg">{title}</h3>
+            <h3 className="font-medium text-lg group-hover:text-purple-700 transition-colors duration-300">{title}</h3>
             <p className="text-sm text-gray-500">{course}</p>
           </div>
         </div>
@@ -70,22 +83,30 @@ const UpcomingAssignment: React.FC<UpcomingAssignmentProps> = ({
           {status !== 'submitted' && status !== 'graded' && (
             <span className="flex items-center">
               <Clock className="h-4 w-4 mr-1" />
-              Time remaining: 2 days
+              <span>Time remaining: {getDaysRemaining()}</span>
             </span>
           )}
         </div>
         
         <div className="mt-4 flex space-x-2">
           {status === 'pending' && (
-            <Button size="sm" variant="default">Start Now</Button>
+            <Link to="/assignments">
+              <Button size="sm" variant="default">Start Now</Button>
+            </Link>
           )}
           {status === 'submitted' && (
-            <Button size="sm" variant="outline">View Submission</Button>
+            <Link to="/assignments">
+              <Button size="sm" variant="outline">View Submission</Button>
+            </Link>
           )}
           {status === 'graded' && (
-            <Button size="sm" variant="outline">View Feedback</Button>
+            <Link to="/assignments">
+              <Button size="sm" variant="outline">View Feedback</Button>
+            </Link>
           )}
-          <Button size="sm" variant="outline">View Details</Button>
+          <Link to="/assignments">
+            <Button size="sm" variant="outline">View Details</Button>
+          </Link>
         </div>
       </CardContent>
     </Card>
