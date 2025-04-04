@@ -1,6 +1,6 @@
-
 import React from 'react';
 import { Book, Award, CheckCircle, Clock } from 'lucide-react';
+import { Card, CardContent } from '@/components/ui/card';
 import CourseCard from './CourseCard';
 import ProgressStats from './ProgressStats';
 import UpcomingAssignment from './UpcomingAssignment';
