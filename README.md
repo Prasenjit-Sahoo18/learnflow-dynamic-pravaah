@@ -1,20 +1,18 @@
-# Welcome to your Lovable project
+# E learning platform
 
 ## Project info
+https://learnflow-dynamic-pravaah.vercel.app/
 
-**URL**: https://lovable.dev/projects/a61ebffc-3bee-46de-a24a-204d5d556708
 
 ## How can I edit this code?
 
 There are several ways of editing your application.
 
-**Use Lovable**
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/a61ebffc-3bee-46de-a24a-204d5d556708) and start prompting.
 
 Changes made via Lovable will be committed automatically to this repo.
 
-**Use your preferred IDE**
+
 
 If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
 
@@ -60,14 +58,6 @@ This project is built with:
 - shadcn-ui
 - Tailwind CSS
 
-## How can I deploy this project?
 
-Simply open [Lovable](https://lovable.dev/projects/a61ebffc-3bee-46de-a24a-204d5d556708) and click on Share -> Publish.
 
-## Can I connect a custom domain to my Lovable project?
 
-Yes it is!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
